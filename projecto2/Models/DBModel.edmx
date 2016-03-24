@@ -75,6 +75,13 @@
           <Property Name="Link" Type="ntext" />
           <Property Name="ParentMenuId" Type="int" />
         </EntityType>
+        <EntityType Name="MyDynamicValue">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="Id" />
@@ -162,6 +169,7 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MyDynamicValue" EntityType="Self.MyDynamicValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -314,6 +322,7 @@
             <End Role="MenuItem" EntitySet="MenuItem" />
             <End Role="MenuItem1" EntitySet="MenuItem" />
           </AssociationSet>
+          <EntitySet Name="MyDynamicValue" EntityType="ProjectO1Model.MyDynamicValue" />
           </EntityContainer>
         <EntityType Name="MenuItem">
           <Key>
@@ -338,6 +347,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MyDynamicValue">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -426,6 +442,14 @@
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Display" ColumnName="Display" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MyDynamicValue">
+            <EntityTypeMapping TypeName="ProjectO1Model.MyDynamicValue">
+              <MappingFragment StoreEntitySet="MyDynamicValue">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

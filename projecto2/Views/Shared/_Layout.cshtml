@@ -73,11 +73,13 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="~/Content/dist/css/skins/_all-skins.min.css">
 
+    <link href="~/content/my_css.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Full Body Container -->
     <div id="container">
         @Html.Partial("_Header")
+
         @RenderBody()
         @Html.Partial("_Footer")
     </div>

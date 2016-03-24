@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using projecto2.MyEngines;
+using projecto2.Models;
 namespace projecto2.Controllers
 {
     public class HomeController : Controller
     {
+        ProjectO1Entities db = new ProjectO1Entities();
         public ActionResult Index()
         {
-            return View();
+            MyDynamicEngine engine = new MyDynamicEngine();
+            string post_id = engine.getValue("HOME_PAGE");
+            if (post_id == null)
+            {
+                return HttpNotFound("Chưa cài đặt homepage");
+            }
+            int id = Int16.Parse(post_id);
+            Post post = db.Post.SingleOrDefault(t => t.Id == id);
+            return View(post);
         }
 
-        public ActionResult About()
+        public ActionResult Post(int id)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            Post post = db.Post.SingleOrDefault(t => t.Id == id);
+            return View(post);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

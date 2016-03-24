@@ -32,5 +32,6 @@ namespace projecto2.Models
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<MenuItem> MenuItem { get; set; }
+        public virtual DbSet<MyDynamicValue> MyDynamicValue { get; set; }
     }
 }

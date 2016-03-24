@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using projecto2.Models;
 using System.Threading.Tasks;
+using projecto2.MyEngines;
 namespace projecto2.Controllers
 {
     public class AdminController : Controller
@@ -14,6 +15,14 @@ namespace projecto2.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> updateHomePage(int idpost)
+        {
+            MyDynamicEngine engine = new MyDynamicEngine();
+            await engine.setValue("HOME_PAGE", idpost.ToString());
+            return RedirectToAction("Index");
         }
 
         /// <summary>

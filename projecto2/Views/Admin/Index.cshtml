@@ -4,14 +4,48 @@
     List<projecto2.Models.Post> posts = db.Post.ToList();
     List<projecto2.Models.MenuItem> menuItems = db.MenuItem.ToList();
     List<projecto2.Models.MenuItem> firstparentMenuItems = db.MenuItem.Where(t => t.ParentMenuId == null).ToList();
+
+    projecto2.MyEngines.MyDynamicEngine myengine = new projecto2.MyEngines.MyDynamicEngine();
+
+    short home_id = -1;
+    string idhomepost = myengine.getValue("HOME_PAGE");
+    if(idhomepost != null)
+    {
+        home_id = Int16.Parse(idhomepost);
+    }
 }
 
-<div class="section">
+<br />
+<br />
+<div class="section my-backgroud-shadow">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-            <div class="box">
+            <div class="box my-box-shadow">
                 <div class="box-header">
                     <h3>Admin</h3>
+                </div>
+
+                <div class="box-body">
+                    <form class="form-horizontal" method="post" action="/admin/updateHomePage">
+                        <div class="form-group">
+                            <div class="col-sm-3"><label>Post hiển thị Home</label></div>
+                            <div class="col-sm-8">
+                                <select name="idPost" required class="form-control">
+                                    <option>Chọn bài</option>
+                                    @foreach (var post in posts)
+                                {
+                                        <option value="@post.Id"
+                                                @(home_id == post.Id? "selected": "")>
+                                            @post.Title
+                                            </option>
+                                }
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
+                                <input type="submit" class="btn btn-warning" value="Lưu" />
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="box-body">
 
@@ -34,11 +68,11 @@
                                     <tbody>
                                         @foreach (var item in posts)
                                         {
-                                            <tr>
-                                                <td>@item.Id</td>
-                                                <td>@item.Title</td>
-                                                <td><a href="/admin/editPost/@item.Id" class="btn btn-warning">Sửa</a></td>
-                                            </tr>
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Title</td>
+                                            <td><a href="/admin/editPost/@item.Id" class="btn btn-warning">Sửa</a></td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -56,7 +90,7 @@
                                                     <option selected>Menu chính</option>
                                                     @foreach (var item in firstparentMenuItems)
                                                     {
-                                                        <option value="@item.Id">@item.Display</option>
+                                                    <option value="@item.Id">@item.Display</option>
                                                     }
                                                 </select>
                                             </div>
@@ -86,36 +120,35 @@
                                     <tbody>
                                         <span style="color:red;">Menu cha đang chứa menu con thì không được sửa Menu Cha</span>
                                         @foreach (var item in menuItems)
-                                        {                                            
-                                            <form action="/admin/editHeadItem" method="post">
-                                                <tr>
-                                                    <td>
-                                                        <input type="hidden" name="Id" value="@item.Id" />
-                                                        @item.Id
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="@item.Display" name="display" />
-                                                    </td>
-                                                    <td>
-                                                        <select name="parentId" class="form-control" 
-                                                                @(item.MenuItem1.Count() != 0 ? "disabled" : "")                                            
-                                                                >
-                                                            <option selected>Menu chính</option>
-                                                            @foreach (var headmenu in firstparentMenuItems)
+                                        {
+                                        <form action="/admin/editHeadItem" method="post">
+                                            <tr>
+                                                <td>
+                                                    <input type="hidden" name="Id" value="@item.Id" />
+                                                    @item.Id
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="@item.Display" name="display" />
+                                                </td>
+                                                <td>
+                                                    <select name="parentId" class="form-control"
+                                                            @(item.MenuItem1.Count() != 0 ? "disabled" : "")>
+                                                        <option selected>Menu chính</option>
+                                                        @foreach (var headmenu in firstparentMenuItems)
                                                             {
-                                                                <option value="@headmenu.Id"
-                                                                        @(headmenu.Id == item.ParentMenuId ? "selected" : "")>
-                                                                    @headmenu.Display
-                                                                </option>
+                                                            <option value="@headmenu.Id"
+                                                                    @(headmenu.Id == item.ParentMenuId ? "selected" : "")>
+                                                                @headmenu.Display
+                                                            </option>
                                                             }
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="@item.Link" name="link" />
-                                                    </td>
-                                                    <td><input class="btn btn-warning" type="submit" value="Lưu" /></td>                                          
-                                                </tr>
-                                            </form>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" value="@item.Link" name="link" />
+                                                </td>
+                                                <td><input class="btn btn-warning" type="submit" value="Lưu" /></td>
+                                            </tr>
+                                        </form>
                                         }
                                     </tbody>
                                 </table>

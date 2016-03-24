@@ -1,69 +1,106 @@
 ﻿@model projecto2.Models.Post
 
 @{
-    ViewBag.Title = "editPost";
+    ViewBag.Title = "addPost";
 }
+<br />
+<br />
+<div class="section my-backgroud-shadow">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="box my-box-shadow">
+                <div class="box-header">
+                    <h3>Thêm bài viết</h3>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#wordtab" data-toggle="tab" aria-expanded="true">Word Editor</a></li>
+                            <li class=""><a href="#rawhtmltab" data-toggle="tab" aria-expanded="false">Raw HTML</a></li>
+                            <li class=""><a href="#htmlEditortab" data-toggle="tab" aria-expanded="false">HTML Editor</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="wordtab">
+                                <form action="/admin/editPost" method="post">
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <div class="form-group">
+                                        <input name="title" type="text" class="form-control" placeholder="Tiêu đề" autocomplete="off" value="@Model.Title" />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="editor1" name="content" class="form-control" placeholder="Nội dụng" style="height: 1000px;">@Model.Content</textarea>
+                                    </div>
 
-<h2>editPost</h2>
+                                    <div class="form-group">
+                                        <input value="Lưu" type="submit" class="btn btn-warning pull-right" />
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="rawhtmltab">
+                                <form action="/admin/editPost" method="post">
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <div class="form-group">
+                                        <input name="title" type="text" class="form-control" placeholder="Tiêu đề" autocomplete="off" value="@Model.Title" />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="content" id="rawHtmlEditor" class="form-control" placeholder="Nội dụng" style="height: 500px;">@Model.Content</textarea>
+                                    </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Post</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+                                    <div class="form-group">
+                                        <input value="Lưu" type="submit" class="btn btn-warning pull-right" />
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="htmlEditortab">
+                                <form action="/admin/editPost" method="post">
+                                    <input type="hidden" name="Id" value="@Model.Id" />
+                                    <div class="form-group">
+                                        <input name="title" type="text" class="form-control" placeholder="Tiêu đề" autocomplete="off" value="@Model.Title" />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="content" id="AceEditor" class="form-control" placeholder="Nội dụng" style="height: 500px;">@Model.Content</textarea>
+                                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MainMenuID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MainMenuID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MainMenuID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SubmenuID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SubmenuID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SubmenuID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                                    <div class="form-group">
+                                        <input value="Lưu" type="submit" class="btn btn-warning pull-right" />
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <p>Last update: @Model.DateCreated</p>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+<script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script src="~/content/plugins/ace/ace.js"></script>
+
+<script>
+    CKEDITOR.replace('editor1');
+
+    var editor = ace.edit("AceEditor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.resize();
+    editor.setOption("maxLines", 30);
+    editor.setName("content");
+</script>
+<style type="text/css" media="screen">
+    #AceEditor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height:500px;
+    }
+</style>
