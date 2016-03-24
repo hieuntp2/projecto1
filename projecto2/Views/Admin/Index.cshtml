@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Index";
+    projecto2.Models.ProjectO1Entities db = new projecto2.Models.ProjectO1Entities();
+    List<projecto2.Models.Post> posts = db.Post.ToList();
+    List<projecto2.Models.MenuItem> menuItems = db.MenuItem.ToList();
+    List<projecto2.Models.MenuItem> firstparentMenuItems = db.MenuItem.Where(t => t.ParentMenuId == null).ToList();
+}
+
+<div class="section">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="box">
+                <div class="box-header">
+                    <h3>Admin</h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#posttab" data-toggle="tab" aria-expanded="true">Bài viết</a></li>
+                            <li class=""><a href="#menutab" data-toggle="tab" aria-expanded="false">Menu</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="posttab">
+                                <a class="btn btn-warning" href="/admin/addPost">Thêm bài viết</a>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td>Id</td>
+                                            <td>Tiêu đề</td>
+                                            <td>Tool</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in posts)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Title</td>
+                                                <td><a href="/admin/editPost/@item.Id" class="btn btn-warning">Sửa</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="menutab">
+                                <div>
+                                    <form class="form-horizontal" action="/admin/addHeadItem" method="post">
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                <input type="text" name="display" placeholder="Tên menu" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select name="parentId" class="form-control">
+                                                    <option selected>Menu chính</option>
+                                                    @foreach (var item in firstparentMenuItems)
+                                                    {
+                                                        <option value="@item.Id">@item.Display</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8">
+                                                <input type="text" name="link" placeholder="Link đến" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="submit" class="btn btn-warning" value="Thêm" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr />
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td>Id</td>
+                                            <td>Tiêu đề</td>
+                                            <td>Menu cha</td>
+                                            <td>Link</td>
+                                            <td>Tool</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <span style="color:red;">Menu cha đang chứa menu con thì không được sửa Menu Cha</span>
+                                        @foreach (var item in menuItems)
+                                        {                                            
+                                            <form action="/admin/editHeadItem" method="post">
+                                                <tr>
+                                                    <td>
+                                                        <input type="hidden" name="Id" value="@item.Id" />
+                                                        @item.Id
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" value="@item.Display" name="display" />
+                                                    </td>
+                                                    <td>
+                                                        <select name="parentId" class="form-control" 
+                                                                @(item.MenuItem1.Count() != 0 ? "disabled" : "")                                            
+                                                                >
+                                                            <option selected>Menu chính</option>
+                                                            @foreach (var headmenu in firstparentMenuItems)
+                                                            {
+                                                                <option value="@headmenu.Id"
+                                                                        @(headmenu.Id == item.ParentMenuId ? "selected" : "")>
+                                                                    @headmenu.Display
+                                                                </option>
+                                                            }
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" value="@item.Link" name="link" />
+                                                    </td>
+                                                    <td><input class="btn btn-warning" type="submit" value="Lưu" /></td>                                          
+                                                </tr>
+                                            </form>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
