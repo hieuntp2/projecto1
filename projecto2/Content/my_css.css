@@ -5,3 +5,7 @@
 .my-backgroud-shadow{
     background-color: rgba(210, 214, 222, 0.28);
 }
+
+img{
+    width:100%;
+}

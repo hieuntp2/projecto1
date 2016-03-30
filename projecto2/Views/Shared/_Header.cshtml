@@ -5,7 +5,6 @@
 <!-- Start Header Section -->
 <div class="hidden-header"></div>
 <header class="clearfix">
-
     <!-- End Top Bar -->
     <!-- Start  Logo & Naviagtion  -->
     <div class="navbar navbar-default navbar-top">
@@ -17,7 +16,7 @@
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
                 <a class="navbar-brand" href="/home">
-                    <img alt="" src="~/Content/images/margo.png">
+                    <img alt="" src="~/Content/images/vSource Software Solution.png">
                 </a>
             </div>
             <div class="navbar-collapse collapse">               
@@ -27,7 +26,7 @@
                     @foreach (var item in headmenu)
                     {
                         <li>
-                            <a  href="@item.Link">@item.Display</a>
+                            <a  href="@item.Link" style="font-size:17px; text-transform:uppercase;">@item.Display</a>
 
                             @if (item.MenuItem1.Count() != 0)
                             {
@@ -35,7 +34,7 @@
                                     @foreach (var submenu in item.MenuItem1)
                                     {
                                         <li>
-                                            <a href="@submenu.Link">@submenu.Display</a>
+                                            <a href="@submenu.Link" style="font-size:15px;">@submenu.Display</a>
                                         </li>
                                     }
                                 </ul>
@@ -60,7 +59,7 @@
                             {
                                 <li>
                                     <a href="@submenu.Link">@submenu.Display</a>
-                                </li>
+                                </li>                                
                             }
                         </ul>
                     }

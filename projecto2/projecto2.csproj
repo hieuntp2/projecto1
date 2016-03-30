@@ -1587,6 +1587,7 @@
     <Content Include="Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-codes.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\hover-min.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -1595,10 +1596,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyAnguarJS\angular.min.js" />
+    <Content Include="Scripts\MyAnguarJS\angularjs_admin_temppost.js" />
+    <Content Include="Scripts\MyAnguarJS\app.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1637,6 +1643,7 @@
     <Content Include="Views\Admin\editPost.cshtml" />
     <Content Include="Views\Admin\addPost.cshtml" />
     <Content Include="Views\Home\Post.cshtml" />
+    <Content Include="Views\Admin\temppost.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

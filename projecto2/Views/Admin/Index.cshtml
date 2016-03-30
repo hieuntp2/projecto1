@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
     projecto2.Models.ProjectO1Entities db = new projecto2.Models.ProjectO1Entities();
-    List<projecto2.Models.Post> posts = db.Post.ToList();
+    List<projecto2.Models.Post> posts = db.Post.OrderByDescending(t=>t.Id).ToList();
     List<projecto2.Models.MenuItem> menuItems = db.MenuItem.ToList();
     List<projecto2.Models.MenuItem> firstparentMenuItems = db.MenuItem.Where(t => t.ParentMenuId == null).ToList();
 

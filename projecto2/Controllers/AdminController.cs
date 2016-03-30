@@ -131,5 +131,10 @@ namespace projecto2.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        public ActionResult temppost()
+        {
+            return View();
+        }
     }
 }
