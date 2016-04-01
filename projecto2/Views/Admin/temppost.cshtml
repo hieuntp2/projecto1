@@ -9,10 +9,10 @@
                         <li><a href="#wordtab" data-toggle="tab" aria-expanded="true">Raw HTML</a></li>
                         <li><a href="#rawhtmltab" data-toggle="tab" aria-expanded="false">Html Editor</a></li>
                     </ul>
-                    <div class="tab-content">   
+                    <div class="tab-content">
                         <div class="tab-pane active" id="ckeditortab">
                             <textarea ck-editor id="ckeditor" name="content" class="form-control" placeholder="Nội dung" style="height: 500px;">{{controller.displayHtml}}</textarea>
-                        </div>                     
+                        </div>
                         <div class="tab-pane" id="wordtab">
                             <textarea id="editor1" name="content" class="form-control" placeholder="Nội dung" style="height: 500px;" ng-model="controller.displayHtml"></textarea>
                         </div>
@@ -34,7 +34,22 @@
     <div class="clearfix"></div>
     <hr />
     <h3>Full display</h3>
-    <div class="row col-sm-8 col-sm-offset-2" ng-bind-html="controller.displayHtml  | html"></div>
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#col_md_8_tab" data-toggle="tab" aria-expanded="true">col-md-8</a></li>
+            <li><a href="#col_md_12_tab" data-toggle="tab" aria-expanded="true">col-md-12</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="col_md_8_tab">
+                <div class="row col-sm-8 col-sm-offset-2" ng-bind-html="controller.displayHtml  | html"></div>
+            </div>
+            <div class="tab-pane" id="col_md_12_tab">
+                <div class="row col-sm-12" ng-bind-html="controller.displayHtml  | html"></div>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+    </div>
 </div>
 
 <script src="//cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
@@ -42,27 +57,8 @@
     CKEDITOR.replace('ckeditor');
 </script>
 <style type="text/css" media="screen">
-   .ace_editor  {
-  height : 550px;
-}
+    .ace_editor {
+        height: 550px;
+    }
 </style>
 
-
-<div class="row">
-    <div class="col-md-4">
-        <div class="box my-box-shadow hvr-border-fade">
-            <div class="box-header text-center">
-                <h1>.NET</h1>
-            </div>
-
-            <div class="box-body">
-                <img src="http://www.smartsensesolutions.com/images/technology/dotNet.png" />
-                <p>Some message here</p>
-            </div>
-
-            <div class="box-footer">
-                <a class="btn btn-warning">Read more</a>
-            </div>
-        </div>
-    </div>
-</div>

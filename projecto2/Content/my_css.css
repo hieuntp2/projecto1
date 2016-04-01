@@ -9,3 +9,11 @@
 img{
     width:100%;
 }
+
+.img-list-tech-box{
+    width:200px;
+    height:150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

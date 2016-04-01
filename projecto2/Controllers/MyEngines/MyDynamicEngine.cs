@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using projecto2.Models;
 using System.Threading.Tasks;
 namespace projecto2.MyEngines

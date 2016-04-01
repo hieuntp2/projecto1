@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using projecto2.MyEngines;
 using projecto2.Models;
+using System.Threading.Tasks;
 namespace projecto2.Controllers
 {
     public class HomeController : Controller
@@ -27,6 +26,28 @@ namespace projecto2.Controllers
         {
             Post post = db.Post.SingleOrDefault(t => t.Id == id);
             return View(post);
+        }
+
+
+        public ActionResult contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> sendEmail(string email, string message)
+        {
+            GMailer gmail = new GMailer();
+            string fromEmail = "vsourcesoftware@gmail.com";
+            string password = "Admin01!";
+            string toemail = "sales@vsource-software.com";
+            await gmail.Send(fromEmail, password, toemail, "vSSS.com: New Message from website", email, message);
+            return RedirectToAction("thankyou");
+        }
+
+        public ActionResult thankyou()
+        {
+            return View();
         }
 
     }
