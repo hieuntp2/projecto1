@@ -39,7 +39,8 @@ namespace projecto2.Controllers
             GMailer gmail = new GMailer();
             string fromEmail = "vsourcesoftwaresolution@gmail.com";
             string password = "Admin01!";
-            string toemail = "sales@vsource-software.com";
+            //string toemail = "sales@vsource-software.com";
+            string toemail = "hieuntp2@gmail.com";
             await gmail.Send(fromEmail, password, toemail, "vSSS.com: New Message from website", email, message);
             return RedirectToAction("thankyou");
         }
