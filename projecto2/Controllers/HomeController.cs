@@ -28,7 +28,6 @@ namespace projecto2.Controllers
             return View(post);
         }
 
-
         public ActionResult contact()
         {
             return View();
@@ -49,6 +48,5 @@ namespace projecto2.Controllers
         {
             return View();
         }
-
     }
 }

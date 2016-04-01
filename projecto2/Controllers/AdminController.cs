@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using projecto2.MyEngines;
 namespace projecto2.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         ProjectO1Entities db = new ProjectO1Entities();

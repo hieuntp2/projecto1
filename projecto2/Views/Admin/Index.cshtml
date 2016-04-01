@@ -22,7 +22,16 @@
         <div class="col-sm-8 col-sm-offset-2">
             <div class="box my-box-shadow">
                 <div class="box-header">
-                    <h3>Admin</h3>
+                    <h3 style="margin-top: 0px;" class="pull-left">
+                        Admin
+                    </h3>
+
+                    <div class="pull-right">
+                        <form action="/account/logoff" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Log Out" class="btn btn-default"/>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="box-body">
