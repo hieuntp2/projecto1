@@ -37,7 +37,7 @@ namespace projecto2.Controllers
         public async Task<ActionResult> sendEmail(string email, string message)
         {
             GMailer gmail = new GMailer();
-            string fromEmail = "vsourcesoftware@gmail.com";
+            string fromEmail = "vsourcesoftwaresolution@gmail.com";
             string password = "Admin01!";
             string toemail = "sales@vsource-software.com";
             await gmail.Send(fromEmail, password, toemail, "vSSS.com: New Message from website", email, message);
