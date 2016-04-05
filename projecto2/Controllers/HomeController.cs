@@ -34,14 +34,14 @@ namespace projecto2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> sendEmail(string email, string message)
+        public async Task<ActionResult> sendEmail(string email, string subject, string message)
         {
             GMailer gmail = new GMailer();
             string fromEmail = "vsourcesoftwaresolution@gmail.com";
             string password = "Admin01!";
             string toemail = "sales@vsource-software.com";
             //string toemail = "hieuntp2@gmail.com";
-            await gmail.Send(fromEmail, password, toemail, "vSSS.com: New Message from website", email, message);
+            await gmail.Send(fromEmail, password, toemail, "vSSS.com: " + subject, email, message);
             return RedirectToAction("thankyou");
         }
 

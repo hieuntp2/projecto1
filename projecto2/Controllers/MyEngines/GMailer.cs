@@ -12,7 +12,7 @@ namespace projecto2.MyEngines
     {
         public async Task Send(string fromemail, string password, string toemail, string subject, string useremail, string messagebody)
         {
-            string mysj = "Inthef.vn: " + subject;
+            string mysj = subject;
             string body = messagebody;
 
             var fromAddress = new MailAddress(fromemail, useremail);

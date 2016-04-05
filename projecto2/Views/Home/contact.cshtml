@@ -1,41 +1,74 @@
 ﻿@{
     ViewBag.Title = "Contact Us";
 }
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<br />
+<br />
+<br />
+<br />
 
-<br />
-<br />
-<br />
-<br />
-<div class="row my-backgroud-shadow" style="min-height:500px;">
-    <div class="col-md-6 col-lg-offset-3" style="top:30px;">
-        <div class="box box-warning my-box-shadow">
-            <div class="box-header">
-                <h3 style="margin-top: 0px;">Send us email</h3>
-            </div>
+<div class="row my-backgroud-shadow" style="min-height:500px;">   
+    <div class="col-md-10 col-lg-offset-1 panel" style="top:30px;  margin-bottom: 70px; padding-bottom: 25px;">
+        <h2 style="margin-top:25px;">Contact Us</h2>
+        <p>We appreciate your interest in vSource Software Solution. Please use this form to contact us.</p>
+        <div class="col-md-6">
+            <h3>Location</h3>
+            <p><strong>Address:</strong> 124/14 Nguyễn Đình Chiểu, Phường  3, Phú Nhuận, TP.HCM</p>
+            <p><strong>Phone: </strong> + 84 8 39953269</p>
+            <div id="googleMap" style="width:500px;height:380px;"></div>
+        </div>
 
-            <div class="box-body">
-                <form action="/home/sendemail" method="post" class="form-horizontal">
+        <div class="col-md-6">
+            <h3>Send us email</h3>
+
+            <form action="/home/sendemail" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input name="email" type="email" placeholder="Your Email" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input name="subject" type="email" placeholder="Subject" required class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea class="form-control" placeholder="Message" name="message" style="height:200px;" required></textarea>
+                    </div>
+                </div>
+
+                <div class="box-footer">
                     <div class="form-group">
-                        <div class="col-md-12">
-                            <input name="email" type="email" placeholder="Your Email" class="form-control" />
-                        </div>
+                        <input type="submit" class="btn btn-warning pull-right" value="Send" />
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <textarea class="form-control" placeholder="Message" name="message" style="height:200px;"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="box-footer">
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-warning pull-right" value="Send" />
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 
+<script>
+    var myCenter = new google.maps.LatLng(10.803982, 106.682911);
+
+    function initialize() {
+        var mapProp = {
+            center: myCenter,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+        });
+
+        marker.setMap(map);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
