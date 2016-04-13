@@ -2,9 +2,8 @@
     projecto2.Models.ProjectO1Entities db = new projecto2.Models.ProjectO1Entities();
     List<projecto2.Models.MenuItem> headmenu = db.MenuItem.Where(t => t.ParentMenuId == null).ToList();
 }
-<!-- Start Header Section -->
-<div class="hidden-header"></div>
-<header class="clearfix">
+
+<header class="main-header">
     <!-- End Top Bar -->
     <!-- Start  Logo & Naviagtion  -->
     <div class="navbar navbar-default navbar-top">
@@ -19,14 +18,14 @@
                     <img alt="" src="~/Content/images/vSource Software Solutions.png">
                 </a>
             </div>
-            <div class="navbar-collapse collapse">               
+            <div class="navbar-collapse collapse">
                 <!-- Start Navigation List -->
                 <ul class="nav navbar-nav navbar-left">
 
                     @foreach (var item in headmenu)
                     {
                         <li>
-                            <a  href="@item.Link" style="font-size:17px; text-transform:uppercase;">@item.Display</a>
+                            <a href="@item.Link" style="font-size:17px; text-transform:uppercase;">@item.Display</a>
 
                             @if (item.MenuItem1.Count() != 0)
                             {
@@ -50,7 +49,7 @@
             @foreach (var item in headmenu)
             {
                 <li>
-                    <a href="@item.Link">@item.Display</a>
+                    <a href="@item.Link" style=" text-transform: uppercase; font-size:16;">@item.Display</a>
 
                     @if (item.MenuItem1.Count() != 0)
                     {
@@ -58,8 +57,8 @@
                             @foreach (var submenu in item.MenuItem1)
                             {
                                 <li>
-                                    <a href="@submenu.Link">@submenu.Display</a>
-                                </li>                                
+                                    <a href="@submenu.Link" style="font-size:14px;">@submenu.Display</a>
+                                </li>
                             }
                         </ul>
                     }
@@ -71,3 +70,4 @@
     <!-- End Header Logo & Naviagtion -->
 </header>
 <!-- End Header Section -->
+<div class="clearfix"></div>

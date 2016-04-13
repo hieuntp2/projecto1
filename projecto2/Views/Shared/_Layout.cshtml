@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <!-- Basic -->
-    <title>@(ViewBag.Title != null? ViewBag.Title: "vSource Software Solutions")</title>
+    <title>@(ViewBag.Title != null ? ViewBag.Title : "vSource Software Solutions")</title>
     <!-- Define Charset -->
     <meta charset="utf-8">
     <!-- Responsive Metatag -->
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/Content/asset/css/bootstrap.min.css" type="text/css" media="screen">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css" media="screen">
-        
+
     <!-- Slicknav -->
     <link rel="stylesheet" type="text/css" href="~/Content/css/slicknav.css" media="screen">
     <!-- Margo CSS Styles  -->
@@ -68,14 +68,11 @@
     <script src="//angular-ui.github.io/ui-ace/dist/ui-ace.min.js"></script>
     <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-
-
     <!--AdminLTE template
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  -->
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  
+
     <!-- jvectormap -->
     <link rel="stylesheet" href="~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Theme style -->
@@ -86,12 +83,13 @@
 
     <link href="~/content/my_css.css" rel="stylesheet" />
 </head>
-<body ng-app="MyProjectApp">
+<body ng-app="MyProjectApp" class="hold-transition layout-top-nav fixed">
     <!-- Full Body Container -->
-    <div id="container">
+    <div id="container" class="wrapper">
         @Html.Partial("_Header")
-
-        @RenderBody()
+        <div class="content-wrapper" style="background-color: white; top: 100px; padding-top: 75px;">
+            @RenderBody()
+        </div>
         @Html.Partial("_Footer")
     </div>
 
@@ -100,7 +98,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        var evt = window.document.createEvent('UIEvents');
+        evt.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(evt);
+    </script>
 </body>
 </html>
-
 

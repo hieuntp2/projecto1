@@ -99,17 +99,16 @@ h1 {
 
 h2 {
     font-size: 36px;
-    line-height: 28px;
+    line-height: 30px;
     color: #686868 !important;
-    font-family: Geometr212-BKCN-BT !important;
-        margin-top: 40px;
+    font-family: ProximaNova-Regular !important;
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
 h3 {
     font-size: 22px;
     line-height: 27px;
-    font-family: Geometr212-BKCN-BT !important;
     color: #686868;
     margin-top: 25px;
     margin-bottom: 10px;
@@ -672,7 +671,7 @@ ul.social-list {
         position: absolute;
         left: 0;
         top: 100%;
-        width: 180px;
+        width: 400px;
         background-color: #fff;
         visibility: hidden;
         z-index: 2;
@@ -685,6 +684,8 @@ ul.social-list {
         -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        list-style-type: none;
+        border: 2px #e1e1e1 solid;
     }
 
     .navbar-default .navbar-nav > li.drop:hover .dropdown {
@@ -2055,7 +2056,7 @@ ul.icons-list {
 
 
 .section {
-    padding-top: 80px;
+    /*padding-top: 80px;*/
     padding-bottom: 80px;
 }
 
@@ -2908,7 +2909,7 @@ ul.icons-list {
 }
 
     .big-title h1, .big-title h2 {
-        font-size: 26px;
+        font-size: 38px;
         line-height: 32px;
         font-weight: 300;
     }

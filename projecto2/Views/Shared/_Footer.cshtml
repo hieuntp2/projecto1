@@ -1,34 +1,64 @@
-﻿ <!-- Start Footer -->
+﻿@{
+    projecto2.Models.ProjectO1Entities db = new projecto2.Models.ProjectO1Entities();
+    List<projecto2.Models.MenuItem> headmenu = db.MenuItem.Where(t => t.ParentMenuId == null).ToList();
+}
+
+<!-- Start Footer -->
 <footer style="padding-top: 10px;">
     <div class="container">
-        <div class="row footer-widgets">
-            <!-- Start Subscribe & Social Links Widget -->           
-            <div class="col-md-4">
-                <div class="footer-widget social-widget">
-                    <h3 style="color:white;">Follow Us<span class="head-line"></span></h3>
-                    <ul class="social-icons">
-                        <li>
-                            <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
+
+
+        <div class="row" style="padding-bottom:10px;">
+            @foreach (var item in headmenu)
+            {
+                <div class="col-md-3">
+                    <a href="@item.Link" style="text-transform:uppercase; color:white; font-size:17px;">@item.Display</a>
+                    @if (item.MenuItem1.Count() != 0)
+                    {
+                        <ul class="my-footer-ul-lv2">
+                            @foreach (var submenu in item.MenuItem1)
+                            {
+                                <li class="my-footer-ul-li-lv2">
+                                    <a href="@submenu.Link" style="font-size:15px;">@submenu.Display</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div> 
+            }
+        </div>
+
+        <div class="copyright-section" style="padding-top: 0px; padding-bottom: 10px;">
+            <div class="row footer-widgets">
+                <!-- Start Subscribe & Social Links Widget -->
+                <div class="col-md-4 col-md-push-2" style="height: 100px;">
+                    <div class="footer-widget social-widget">
+                        <h3 style="color:white;">Follow Us<span class="head-line"></span></h3>
+                        <ul class="social-icons">
+                            <li>
+                                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="footer-widget mail-subscribe-widget">
-                    <h3 style="color:white;">Contact Us<span class="head-line"></span></h3>
-                    <p>Email: <a href="mailto:sales@vsource-software.com" style="color:#A1A1FF;">sales@vsource-software.com</a></p>
+                <div class="col-md-4" style="height: 100px;">
+                    <div class="footer-widget mail-subscribe-widget">
+                        <h3 style="color:white;">Contact Us<span class="head-line"></span></h3>
+                        <p>Email: <a href="mailto:sales@vsource-software.com" style="color:#A1A1FF;">sales@vsource-software.com</a></p>
+                    </div>
                 </div>
+                <!-- .col-md-3 -->
+                <!-- End Subscribe & Social Links Widget -->
+                <!-- Start Twitter Widget -->
+                <div class="col-md-4 col-md-pull-1" style="height: 100px;">
+                    <h4 style="margin-top: 50px;"><img src="/content/images/footer-vSource Software Solutions.png" class="img-responsive" alt="Footer Logo" /></h4>
+                </div>
+                <!-- .col-md-3 -->
             </div>
-            <!-- .col-md-3 -->
-            <!-- End Subscribe & Social Links Widget -->
-            <!-- Start Twitter Widget -->
-            <div class="col-md-4">
-                <h4 style="margin-top: 50px;"><img src="/content/images/footer-vSource Software Solutions.png" class="img-responsive" alt="Footer Logo" /></h4>
-            </div>
-            <!-- .col-md-3 -->            
+
         </div>
         <!-- .row -->
         <!-- Start Copyright -->

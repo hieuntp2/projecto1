@@ -221,6 +221,8 @@
   <ItemGroup>
     <Content Include="Content\asset\css\bootstrap.min.css" />
     <Content Include="Content\asset\js\bootstrap.min.js" />
+    <Content Include="Content\background_2.jpg" />
+    <Content Include="Content\background_3.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
@@ -301,6 +303,7 @@
     <Content Include="Content\dist\js\demo.js" />
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
+    <Content Include="Content\fast.png" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\footer-vSource Software Solutions.png" />
@@ -331,6 +334,7 @@
     <Content Include="Content\js\owl.carousel.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\script.js" />
+    <Content Include="Content\layer_1.png" />
     <Content Include="Content\my_css.css" />
     <Content Include="Content\plugins\ace\ace.js" />
     <Content Include="Content\plugins\ace\ext-beautify.js" />

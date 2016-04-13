@@ -31,6 +31,7 @@ a.main-button, input[type="submit"] {
 }
 .slicknav_btn {
   border-color: #ee3733;
+  z-index:1000;
 }
 .slicknav_btn:hover {
   background: #ee3733;
